@@ -23,7 +23,7 @@ equation
           lineColor={255,255,255},
           fillColor={28,108,200},
           fillPattern=FillPattern.Solid,
-          textString="(p,h)")}),
+          textString="(m,h)")}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>Note that it is not necessary to specify if the boundary component is a source or a sink. The enthalpy is only relevant when the component acts as a source, i.e. when the mass flow leaves the component.</p>

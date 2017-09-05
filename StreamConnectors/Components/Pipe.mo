@@ -16,7 +16,7 @@ equation
   port_a.m_flow + port_b.m_flow = 0;
 
   // Momentum balance
-  port_a.p - port_b.p = K*port_a.m_flow^2;
+  port_a.p - port_b.p = K*port_a.m_flow*abs(port_a.m_flow);
 
   // Energy balance
   0 = port_a.m_flow*actualStream(port_a.h_outflow) + port_b.m_flow*actualStream(
@@ -30,26 +30,31 @@ equation
   //     Q_flow "This equation is only 'active' when flow enters port_b and leaves port_a";
   annotation (
     preferredView="info",
-    Icon(coordinateSystem(preserveAspectRatio=false), graphics={Rectangle(
+    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Rectangle(
           extent={{-100,40},{100,-40}},
           lineColor={28,108,200},
           fillColor={28,108,200},
-          fillPattern=FillPattern.Solid),Rectangle(
+          fillPattern=FillPattern.Solid),
+        Rectangle(
           extent={{-100,60},{100,40}},
           lineColor={0,0,0},
           fillColor={215,215,215},
-          fillPattern=FillPattern.Backward),Rectangle(
+          fillPattern=FillPattern.Backward),
+        Rectangle(
           extent={{-100,-40},{100,-60}},
           lineColor={0,0,0},
           fillColor={215,215,215},
-          fillPattern=FillPattern.Backward)}),
+          fillPattern=FillPattern.Backward),
+        Line(points={{-40,-80},{40,-80}}, color={0,0,0}),
+        Line(points={{30,-74},{40,-80},{30,-86}}, color={0,0,0})}),
     Diagram(coordinateSystem(preserveAspectRatio=false)),
     Documentation(info="<html>
 <p>This is probably the simplest model of a heated/cooled pipe.</p>
 <h4>Governing equations</h4>
 <p>The equations &quot;on paper&quot; are:</p>
 <p style=\"margin-left: 30px;\">m<sub>in</sub> = m<sub>out</sub></p>
-<p style=\"margin-left: 30px;\">p<sub>in</sub> - p<sub>out</sub> = deltaP=K<sup>.</sup>m<sub>in<sup>2</sup></p>
+<p style=\"margin-left: 30px;\">p<sub>in</sub> - p<sub>out</sub> = deltaP=K<sup>.</sup>m<sub>in</sub>|m<sub>in</sub>|</p>
 <p style=\"margin-left: 30px;\">m<sub>out<sup>.</sup>h<sub>out </sub>= m<sub>in<sup>.</sup>h<sub>in + Q</sub></p>
 <p>Representing the conservation of <i>mass</i>, <i>momentum</i> and <i>energy</i>.</p>
 <h4>Implementation</h4>

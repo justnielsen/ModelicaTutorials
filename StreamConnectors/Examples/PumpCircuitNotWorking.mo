@@ -59,5 +59,5 @@ equation
 - heat is added to 'pipe1' but there is no heat removal from the circuit.
 - the same would be the case for a pump with efficiency <100 %")}),
     Icon(graphics={Line(points={{-80,80},{80,-80}}, color={238,46,47}),Line(
-          points={{80,80},{-80,-80}}, color={238,46,47})}));
+            points={{80,80},{-80,-80}}, color={238,46,47})}));
 end PumpCircuitNotWorking;

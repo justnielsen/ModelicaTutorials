@@ -21,53 +21,65 @@ equation
   p = port_a.p;
   T = Functions.temperature_ph(p, h);
 
-  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={Line(
+  annotation (Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Line(
           points={{-20,-60},{20,-60}},
           color={0,0,0},
-          pattern=LinePattern.Dot),Rectangle(
+          pattern=LinePattern.Dot),
+        Rectangle(
           extent={{-100,100},{0,60}},
           lineColor={0,0,0},
           fillColor={215,215,215},
-          fillPattern=FillPattern.Solid),Rectangle(
+          fillPattern=FillPattern.Solid),
+        Rectangle(
           extent={{0,100},{100,60}},
           lineColor={0,0,0},
           fillColor={215,215,215},
-          fillPattern=FillPattern.Solid),Rectangle(
+          fillPattern=FillPattern.Solid),
+        Rectangle(
           extent={{0,60},{100,20}},
           lineColor={0,0,0},
           fillColor={215,215,215},
-          fillPattern=FillPattern.Solid),Rectangle(
+          fillPattern=FillPattern.Solid),
+        Rectangle(
           extent={{-100,60},{0,20}},
           lineColor={0,0,0},
           fillColor={215,215,215},
-          fillPattern=FillPattern.Solid),Line(
+          fillPattern=FillPattern.Solid),
+        Line(
           points={{0,20},{0,-60}},
           color={0,0,0},
-          pattern=LinePattern.Dot),Text(
+          pattern=LinePattern.Dot),
+        Text(
           extent={{-94,98},{-2,62}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString=DynamicSelect("p [bar]", String(p, significantDigits=4))),
-          Text(
+
+        Text(
           extent={{2,98},{96,62}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString=DynamicSelect("h [kJ/kg]", String(h, significantDigits=4))),
-          Text(
+
+        Text(
           extent={{-94,56},{-2,20}},
           lineColor=DynamicSelect({0,0,0}, if m < 0 then {255,0,0} else {0,0,0}),
+
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString=DynamicSelect("m [kg/s]", String(m, significantDigits=4))),
-          Text(
+
+        Text(
           extent={{2,56},{96,20}},
           lineColor={0,0,0},
           fillColor={215,215,215},
           fillPattern=FillPattern.Solid,
           textString=DynamicSelect("T [°C]", String(T, significantDigits=4))),
-          Line(points={{-20,-80},{20,-80}}, color={0,0,0}),Line(points={{10,-74},
-          {20,-80},{10,-86}}, color={0,0,0})}), Diagram(coordinateSystem(
-          preserveAspectRatio=false)));
+
+        Line(points={{-20,-80},{20,-80}}, color={0,0,0}),
+        Line(points={{10,-74},{20,-80},{10,-86}}, color={0,0,0})}), Diagram(
+        coordinateSystem(preserveAspectRatio=false)));
 end MultiSensor;
