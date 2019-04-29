@@ -1,6 +1,6 @@
 within StreamConnectors.Components;
-model Pipe "A simple pipe with fixed heating/cooling"
-  parameter Real Q_flow=0 "Heat flow rate into the pipe [kW]";
+model Pipe "A simple static pipe with heating/cooling"
+  input Real Q_flow=0 "Heat flow rate into the pipe [kW]" annotation(Dialog(group="Heat input"));
   parameter Real K=dp_nominal/m_flow_nominal^2 "Pressure drop coefficient";
   parameter Real dp_nominal=0.5 "Nominal pressure drop [bar]"
     annotation (Dialog(group="Nominal values"));
@@ -55,7 +55,7 @@ equation
 <p>The equations &quot;on paper&quot; are:</p>
 <p style=\"margin-left: 30px;\">m<sub>in</sub> = m<sub>out</sub></p>
 <p style=\"margin-left: 30px;\">p<sub>in</sub> - p<sub>out</sub> = deltaP=K<sup>.</sup>m<sub>in</sub>|m<sub>in</sub>|</p>
-<p style=\"margin-left: 30px;\">m<sub>out<sup>.</sup>h<sub>out </sub>= m<sub>in<sup>.</sup>h<sub>in + Q</sub></p>
+<p style=\"margin-left: 30px;\">m<sub>out</sub><sup>.</sup>h<sub>out</sub> = m<sub>in</sub><sup>.</sup>h<sub>in</sub> + Q</p>
 <p>Representing the conservation of <i>mass</i>, <i>momentum</i> and <i>energy</i>.</p>
 <h4>Implementation</h4>
 <p>To understand the implementation and the concept of stream connectors:</p>

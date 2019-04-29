@@ -7,7 +7,7 @@ model Pump "A simple pump model"
   parameter Real dp_nominal=2 "Nominal pressure increase [bar]"
     annotation (Dialog(group="Nominal pump values (characteristics)"));
 
-  parameter Real N=1500 "Actual pump speed [RPM]";
+  input Real N=1500 "Actual pump speed [RPM]";
 
   Real dp "Pressure increase [bar]";
 
