@@ -2,10 +2,10 @@
 model MultiSensor "Displays {p,T,m,h}"
   Real p, T, m, h;
 
-  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{-162,
-            18},{-142,38}}), iconTransformation(extent={{-40,-70},{-20,-50}})));
-  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{-162,
-            12},{-142,32}}), iconTransformation(extent={{20,-70},{40,-50}})));
+  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{-120,
+            -10},{-100,10}}),iconTransformation(extent={{-40,-70},{-20,-50}})));
+  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{100,-10},
+            {120,10}}),      iconTransformation(extent={{20,-70},{40,-50}})));
 equation
   // Balance equations
   port_a.m_flow + port_b.m_flow = 0;
