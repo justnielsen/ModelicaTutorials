@@ -1,3 +1,7 @@
 model dsmodelIterationSelect
-  extends Modelica.Blocks.Examples.PID_Controller;
+  extends StreamConnectors.Examples.MIMO.ForcedSplixing_physical;
+  annotation(__Dymola_SimulationIterationVariables={"splitterMixer.PID_a1b1.gainPID.u",
+   "splitterMixer.port_a1.p", "splitterMixer.PID_a2b1.gainPID.u", 
+  "splitterMixer.port_a2.p", "splitterMixer.PID_a3b1.gainPID.u", 
+  "splitterMixer.port_a3.p"});
 end dsmodelIterationSelect;

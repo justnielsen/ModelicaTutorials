@@ -2,9 +2,9 @@ within StreamConnectors.Sources;
 model MassFlowBoundary_h
   "Boundary value component with fixed mass flow rate and enthalpy"
 
-  parameter Real m_flow "Mass flow rate [kg/s]";
-  parameter Real h
-    "Specific enthalpy (only relevant if fluid leaves this component) [kJ/kg]";
+  input Real m_flow "Mass flow rate [kg/s]" annotation(Dialog);
+  input Real h
+    "Specific enthalpy (only relevant if fluid leaves this component) [kJ/kg]" annotation(Dialog);
 
   Interfaces.FluidPort port annotation (Placement(transformation(extent={{100,-10},
             {120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
