@@ -11,10 +11,11 @@ model Pump "A simple pump model"
 
   Real dp "Pressure increase [bar]";
 
-  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{-120,
-            -10},{-100,10}}), iconTransformation(extent={{-120,-10},{-100,10}})));
-  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{100,
-            -10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
+  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{
+            -120,-10},{-100,10}}), iconTransformation(extent={{-120,-10},{-100,
+            10}})));
+  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{
+            100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
 equation
   // Mass balance
   port_a.m_flow + port_b.m_flow = 0;
@@ -23,8 +24,8 @@ equation
   port_a.p - port_b.p = dp;
 
   // Energy balance
-  0 = port_a.m_flow*actualStream(port_a.h_outflow) + port_b.m_flow*actualStream(
-    port_b.h_outflow);
+  0 = port_a.m_flow*actualStream(port_a.h_outflow) + port_b.m_flow*
+    actualStream(port_b.h_outflow);
   port_a.h_outflow = port_b.h_outflow;
 
   // Pump characateristic (affinity law)
@@ -33,15 +34,18 @@ equation
 
   annotation (
     preferredView="info",
-    Icon(coordinateSystem(preserveAspectRatio=false), graphics={Polygon(
+    Icon(coordinateSystem(preserveAspectRatio=false), graphics={
+        Polygon(
           points={{-100,-100},{100,-100},{60,-60},{-60,-60},{-100,-100}},
           lineColor={0,0,0},
           fillColor={175,175,175},
-          fillPattern=FillPattern.CrossDiag),Ellipse(
+          fillPattern=FillPattern.CrossDiag),
+        Ellipse(
           extent={{-100,100},{100,-100}},
           lineColor={0,0,0},
           fillColor={28,108,200},
-          fillPattern=FillPattern.Solid),Polygon(
+          fillPattern=FillPattern.Solid),
+        Polygon(
           points={{90,0},{-50,70},{-40,0},{-50,-70},{90,0}},
           lineColor={0,0,0},
           fillColor={255,255,255},

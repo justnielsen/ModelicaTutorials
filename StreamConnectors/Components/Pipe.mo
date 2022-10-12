@@ -1,16 +1,18 @@
 within StreamConnectors.Components;
 model Pipe "A simple static pipe with heating/cooling"
-  input Real Q_flow=0 "Heat flow rate into the pipe [kW]" annotation(Dialog(group="Heat input"));
+  input Real Q_flow=0 "Heat flow rate into the pipe [kW]"
+    annotation (Dialog(group="Heat input"));
   parameter Real K=dp_nominal/m_flow_nominal^2 "Pressure drop coefficient";
   parameter Real dp_nominal=0.5 "Nominal pressure drop [bar]"
     annotation (Dialog(group="Nominal values"));
   parameter Real m_flow_nominal=1 "Nominal mass flow rate [kg/s]"
     annotation (Dialog(group="Nominal values"));
 
-  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{-120,
-            -10},{-100,10}}), iconTransformation(extent={{-120,-10},{-100,10}})));
-  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{100,
-            -10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
+  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{
+            -120,-10},{-100,10}}), iconTransformation(extent={{-120,-10},{-100,
+            10}})));
+  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{
+            100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
 equation
   // Mass balance
   port_a.m_flow + port_b.m_flow = 0;
@@ -19,8 +21,8 @@ equation
   port_a.p - port_b.p = K*port_a.m_flow*abs(port_a.m_flow);
 
   // Energy balance
-  0 = port_a.m_flow*actualStream(port_a.h_outflow) + port_b.m_flow*actualStream(
-    port_b.h_outflow) + Q_flow*1000;
+  0 = port_a.m_flow*actualStream(port_a.h_outflow) + port_b.m_flow*
+    actualStream(port_b.h_outflow) + Q_flow*1000;
   port_a.h_outflow = port_b.h_outflow;
 
   // Alternative to the two equations describing the energy balance you could write (commented below)

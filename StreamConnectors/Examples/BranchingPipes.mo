@@ -1,5 +1,6 @@
 within StreamConnectors.Examples;
-model BranchingPipes "Branching pipes and prescribes mass flow rate"
+model BranchingPipes
+  "Branching pipes and prescribes mass flow rate"
   extends Modelica.Icons.Example;
   Sources.PressureBoundary_h sink(p=1)
     annotation (Placement(transformation(extent={{100,-10},{80,10}})));
@@ -26,8 +27,8 @@ model BranchingPipes "Branching pipes and prescribes mass flow rate"
     m_flow_nominal=7,
     Q_flow=0.5)
     annotation (Placement(transformation(extent={{-50,-10},{-30,10}})));
-  Components.Pipe pipe3(dp_nominal=1, m_flow_nominal=3) annotation (Placement(
-        transformation(
+  Components.Pipe pipe3(dp_nominal=1, m_flow_nominal=3) annotation (
+      Placement(transformation(
         extent={{-10,-10},{10,10}},
         rotation=90,
         origin={0,-40})));
@@ -58,37 +59,37 @@ equation
     annotation (Line(points={{-79,0},{-65,0}}, color={0,0,0}));
 
   connect(multiSensor1.port_b, pipe.port_a)
-    annotation (Line(points={{21,0},{29,0}},color={0,0,0}));
+    annotation (Line(points={{21,0},{29,0}}, color={0,0,0}));
   connect(pipe.port_b, multiSensor2.port_a)
     annotation (Line(points={{51,0},{57,0}}, color={0,0,0}));
   connect(multiSensor2.port_b, sink.port)
     annotation (Line(points={{63,0},{79,0}}, color={0,0,0}));
   connect(pipe1.port_a, multiSensor3.port_b)
     annotation (Line(points={{-51,-78},{-59,-78}}, color={0,0,0}));
-  connect(source.port, multiSensor3.port_a) annotation (Line(points={{-79,0},{
-          -74,0},{-74,-78},{-65,-78}}, color={0,0,0}));
+  connect(source.port, multiSensor3.port_a) annotation (Line(points={{-79,0},
+          {-74,0},{-74,-78},{-65,-78}}, color={0,0,0}));
   connect(multiSensor.port_b, pipe2.port_a)
     annotation (Line(points={{-59,0},{-51,0}}, color={0,0,0}));
   connect(pipe4.port_b, multiSensor4.port_a)
     annotation (Line(points={{51,40},{57,40}}, color={0,0,0}));
-  connect(multiSensor4.port_b, sink.port)
-    annotation (Line(points={{63,40},{72,40},{72,0},{79,0}}, color={0,0,0}));
+  connect(multiSensor4.port_b, sink.port) annotation (Line(points={{63,40},{
+          72,40},{72,0},{79,0}}, color={0,0,0}));
   connect(multiSensor5.port_b, pipe4.port_a)
     annotation (Line(points={{21,40},{29,40}}, color={0,0,0}));
   connect(pipe2.port_b, multiSensor6.port_a)
     annotation (Line(points={{-29,0},{-21,0}}, color={0,0,0}));
-  connect(pipe3.port_a, multiSensor7.port_b) annotation (Line(points={{
-          -7.21645e-016,-51},{0,-51},{0,-59}}, color={0,0,0}));
+  connect(pipe3.port_a, multiSensor7.port_b) annotation (Line(points={{-7.21645e-016,
+          -51},{0,-51},{0,-59}}, color={0,0,0}));
   connect(multiSensor6.port_b, multiSensor1.port_a)
     annotation (Line(points={{-15,0},{15,0}}, color={0,0,0}));
   connect(multiSensor6.port_b, multiSensor8.port_b)
     annotation (Line(points={{-15,0},{0,0},{0,-15}}, color={0,0,0}));
-  connect(multiSensor6.port_b, multiSensor5.port_a)
-    annotation (Line(points={{-15,0},{0,0},{0,40},{15,40}}, color={0,0,0}));
+  connect(multiSensor6.port_b, multiSensor5.port_a) annotation (Line(points=
+         {{-15,0},{0,0},{0,40},{15,40}}, color={0,0,0}));
   connect(pipe3.port_b, multiSensor8.port_a)
     annotation (Line(points={{0,-29},{0,-21}}, color={0,0,0}));
-  connect(multiSensor10.port_b, sink.port)
-    annotation (Line(points={{53,-78},{72,-78},{72,0},{79,0}}, color={0,0,0}));
+  connect(multiSensor10.port_b, sink.port) annotation (Line(points={{53,-78},
+          {72,-78},{72,0},{79,0}}, color={0,0,0}));
   connect(pipe1.port_b, multiSensor9.port_a)
     annotation (Line(points={{-29,-78},{-21,-78}}, color={0,0,0}));
   connect(multiSensor9.port_b, multiSensor7.port_a)
@@ -96,18 +97,18 @@ equation
   connect(multiSensor9.port_b, multiSensor10.port_a)
     annotation (Line(points={{-15,-78},{47,-78}}, color={0,0,0}));
   annotation (preferredView="diagram", Diagram(graphics={Text(
-          extent={{-98,98},{-40,92}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.None,
-          textString="What to observe:",
-          horizontalAlignment=TextAlignment.Left),Text(
-          extent={{-98,92},{0,80}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.None,
-          horizontalAlignment=TextAlignment.Left,
-          textString="- prescribed upstream mass flow
+              extent={{-98,98},{-40,92}},
+              lineColor={0,0,0},
+              fillColor={215,215,215},
+              fillPattern=FillPattern.None,
+              textString="What to observe:",
+              horizontalAlignment=TextAlignment.Left),Text(
+              extent={{-98,92},{0,80}},
+              lineColor={0,0,0},
+              fillColor={215,215,215},
+              fillPattern=FillPattern.None,
+              horizontalAlignment=TextAlignment.Left,
+              textString="- prescribed upstream mass flow
 - pressure builds up \"backwards\"
 - mixing enthalpies are calculated \"automatically\"
 - reverse flow (in pipe3) is handled")}));

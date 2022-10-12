@@ -20,28 +20,27 @@ model ForcedSplitting_nonPhysical
 equation
   connect(massFlowBoundary.port, splitter.port_a)
     annotation (Line(points={{-19,0},{9,0}}, color={0,0,0}));
-  connect(splitter.port_b, pressureBoundary_b.port)
-    annotation (Line(points={{31,6},{50,6},{50,30},{59,30}}, color={0,0,0}));
-  connect(splitter.port_c, pressureBoundary_c.port) annotation (Line(points={{31,
-          -6},{50,-6},{50,-30},{59,-30}}, color={0,0,0}));
-  annotation (Diagram(graphics={                         Text(
-          extent={{-98,98},{-40,92}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.None,
-          textString="What to observe:",
-          horizontalAlignment=TextAlignment.Left),Text(
-          extent={{-98,92},{0,80}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.None,
-          horizontalAlignment=TextAlignment.Left,
-          textString="- An inlet flow is applied. Outlet flows are 0.25 and 0.75 times the inlet flow respectively.
+  connect(splitter.port_b, pressureBoundary_b.port) annotation (Line(
+        points={{31,6},{50,6},{50,30},{59,30}}, color={0,0,0}));
+  connect(splitter.port_c, pressureBoundary_c.port) annotation (Line(
+        points={{31,-6},{50,-6},{50,-30},{59,-30}}, color={0,0,0}));
+  annotation (Diagram(graphics={Text(
+                extent={{-98,98},{-40,92}},
+                lineColor={0,0,0},
+                fillColor={215,215,215},
+                fillPattern=FillPattern.None,
+                textString="What to observe:",
+                horizontalAlignment=TextAlignment.Left),Text(
+                extent={{-98,92},{0,80}},
+                lineColor={0,0,0},
+                fillColor={215,215,215},
+                fillPattern=FillPattern.None,
+                horizontalAlignment=TextAlignment.Left,
+                textString="- An inlet flow is applied. Outlet flows are 0.25 and 0.75 times the inlet flow respectively.
 - After 20 seconds the inlet flow is increased: the flow split is maintained."),
-        Line(
-          points={{-56,0},{-42,0}},
-          color={238,46,47},
-          pattern=LinePattern.Dash)}), Documentation(info="<html>
+          Line( points={{-56,0},{-42,0}},
+                color={238,46,47},
+                pattern=LinePattern.Dash)}), Documentation(info="<html>
 <p><img src=\"modelica://StreamConnectors/Resources/Images/Examples/ForcedSplitting_nonPhysical.png\"/></p>
 </html>"));
 end ForcedSplitting_nonPhysical;

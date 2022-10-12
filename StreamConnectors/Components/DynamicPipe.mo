@@ -1,12 +1,13 @@
 ﻿within StreamConnectors.Components;
 model DynamicPipe "A simple dynamic pipe with heating/cooling"
-  input Real Q_flow=0 "Heat flow rate into the pipe [kW]" annotation(Dialog(group="Heat input"));
+  input Real Q_flow=0 "Heat flow rate into the pipe [kW]"
+    annotation (Dialog(group="Heat input"));
   parameter Real K=dp_nominal/m_flow_nominal^2 "Pressure drop coefficient";
   parameter Real dp_nominal=0.5 "Nominal pressure drop [bar]"
     annotation (Dialog(group="Nominal values"));
   parameter Real m_flow_nominal=1 "Nominal mass flow rate [kg/s]"
     annotation (Dialog(group="Nominal values"));
-    parameter Real V=0.1 "Volume of stored fluid [m3]";
+  parameter Real V=0.1 "Volume of stored fluid [m3]";
 
   Real U "Internal energy [kJ]";
   Real u "Specific internal energy — a fluid property [kJ/kg]";
@@ -14,12 +15,14 @@ model DynamicPipe "A simple dynamic pipe with heating/cooling"
   Real p "Pressure of fluid leaving the pipe [bar]";
   Real h "Specific enthalpy of fluid leaving the pipe";
 
-  constant Real rho=1000 "Density of fluid — assumed constant for simplicity [kg/m3]";
+  constant Real rho=1000
+    "Density of fluid — assumed constant for simplicity [kg/m3]";
 
-  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{-120,
-            -10},{-100,10}}), iconTransformation(extent={{-120,-10},{-100,10}})));
-  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{100,
-            -10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
+  Interfaces.FluidPort port_a annotation (Placement(transformation(extent={{
+            -120,-10},{-100,10}}), iconTransformation(extent={{-120,-10},{-100,
+            10}})));
+  Interfaces.FluidPort port_b annotation (Placement(transformation(extent={{
+            100,-10},{120,10}}), iconTransformation(extent={{100,-10},{120,10}})));
 initial equation
   // steady state initialization
   der(U) = 0;
@@ -31,8 +34,8 @@ equation
   port_a.p - port_b.p = K*port_a.m_flow*abs(port_a.m_flow);
 
   // Energy balance
-  der(U) = port_a.m_flow*actualStream(port_a.h_outflow) + port_b.m_flow*actualStream(
-    port_b.h_outflow) + Q_flow;
+  der(U) = port_a.m_flow*actualStream(port_a.h_outflow) + port_b.m_flow*
+    actualStream(port_b.h_outflow) + Q_flow;
   port_a.h_outflow = port_b.h_outflow;
 
   // Definition of internal energy
@@ -42,8 +45,14 @@ equation
 
   // Considering the flow direction, define pressure/enthalpy of outgoing fluid
   // with built-in functions. Thus, flow reversal is supported
-  p = Modelica.Fluid.Utilities.regStep(port_a.m_flow, port_b.p, port_a.p);
-  h = Modelica.Fluid.Utilities.regStep(port_a.m_flow, port_b.h_outflow, port_a.h_outflow);
+  p = Modelica.Fluid.Utilities.regStep(
+        port_a.m_flow,
+        port_b.p,
+        port_a.p);
+  h = Modelica.Fluid.Utilities.regStep(
+        port_a.m_flow,
+        port_b.h_outflow,
+        port_a.h_outflow);
 
   annotation (
     preferredView="info",

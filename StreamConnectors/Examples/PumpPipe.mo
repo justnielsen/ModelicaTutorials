@@ -31,17 +31,17 @@ equation
   connect(multiSensor2.port_b, sink.port)
     annotation (Line(points={{53,0},{59,0}}, color={0,0,0}));
   annotation (preferredView="diagram", Diagram(graphics={Text(
-          extent={{-98,98},{-40,92}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.None,
-          textString="What to observe:",
-          horizontalAlignment=TextAlignment.Left),Text(
-          extent={{-98,92},{0,80}},
-          lineColor={0,0,0},
-          fillColor={215,215,215},
-          fillPattern=FillPattern.None,
-          horizontalAlignment=TextAlignment.Left,
-          textString="- both boundary pressures are 1 bar (atmospheric pressure)
+              extent={{-98,98},{-40,92}},
+              lineColor={0,0,0},
+              fillColor={215,215,215},
+              fillPattern=FillPattern.None,
+              textString="What to observe:",
+              horizontalAlignment=TextAlignment.Left),Text(
+              extent={{-98,92},{0,80}},
+              lineColor={0,0,0},
+              fillColor={215,215,215},
+              fillPattern=FillPattern.None,
+              horizontalAlignment=TextAlignment.Left,
+              textString="- both boundary pressures are 1 bar (atmospheric pressure)
 - pressure/flow after pump is a function of the \"system characteristics\" and not prescribed by the pump.")}));
 end PumpPipe;
